@@ -79,6 +79,10 @@ export function WhatsAppConfig() {
   const [registrationProbe, setRegistrationProbe] =
     useState<RegistrationProbe | null>(null);
 
+  const isLocalhost =
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
   const webhookUrl =
     typeof window !== 'undefined'
       ? `${window.location.origin}/api/whatsapp/webhook`
@@ -443,7 +447,7 @@ export function WhatsAppConfig() {
                   }
                 >
                   {isRegistered
-                    ? 'Registered — Meta will deliver events to wacrm'
+                    ? 'Registered — Meta will deliver events to WhatsApp CRM'
                     : 'Not registered — Meta will not deliver events'}
                 </AlertTitle>
               </div>
@@ -627,7 +631,7 @@ export function WhatsAppConfig() {
                   Numbers → Two-step verification
                 </strong>
                 . Without this PIN, Meta saves your credentials but
-                won&apos;t actually route inbound messages to wacrm —
+                won&apos;t actually route inbound messages to WhatsApp CRM —
                 the symptom that hits second numbers under a shared
                 WABA. Leave blank to keep an existing registration
                 untouched.
@@ -645,6 +649,14 @@ export function WhatsAppConfig() {
             </CardDescription>
           </CardHeader>
           <CardContent>
+            {isLocalhost && (
+              <div className="mb-4 rounded-md border border-amber-700/50 bg-amber-950/30 px-4 py-3 text-sm text-amber-200">
+                <strong className="font-semibold">Localhost detected.</strong>
+                {' '}Meta cannot reach your local machine directly. Start a tunnel:
+                <code className="mx-1 rounded bg-amber-900/50 px-1.5 py-0.5 font-mono text-xs">npm run dev:tunnel</code>
+                {' '}then copy the ngrok URL shown in the terminal.
+              </div>
+            )}
             <div className="space-y-2">
               <Label className="text-slate-300">Webhook Callback URL</Label>
               <div className="flex gap-2">

@@ -8,22 +8,22 @@
  *
  * Adding a new theme is a two-step change:
  *   1. Append the new `html[data-theme="<id>"]` block in globals.css
- *      with every token from an existing theme (use violet as the
+ *      with every token from an existing theme (use orange-dark as the
  *      shape reference).
  *   2. Add an entry below. The order here drives the picker grid.
  */
 
 export const THEME_IDS = [
-  "violet",
-  "emerald",
-  "cobalt",
-  "amber",
-  "rose",
+  "orange-dark",
+  "orange-blaze",
+  "orange-sunset",
+  "orange-pumpkin",
+  "orange-glow",
 ] as const;
 
 export type ThemeId = (typeof THEME_IDS)[number];
 
-export const DEFAULT_THEME: ThemeId = "violet";
+export const DEFAULT_THEME: ThemeId = "orange-dark";
 
 export const STORAGE_KEY = "wacrm.theme";
 
@@ -42,34 +42,34 @@ export interface ThemeMeta {
 
 export const THEMES: ReadonlyArray<ThemeMeta> = [
   {
-    id: "violet",
-    name: "Violet",
-    tagline: "The default — confident, slightly playful.",
-    swatch: "oklch(0.526 0.247 293)",
+    id: "orange-dark",
+    name: "Orange Dark",
+    tagline: "Rich orange accent on a warm dark canvas.",
+    swatch: "oklch(0.62 0.15 40)",
   },
   {
-    id: "emerald",
-    name: "Emerald",
-    tagline: "Growth-coded, nods at messaging without copying WhatsApp green.",
-    swatch: "oklch(0.62 0.16 162)",
+    id: "orange-blaze",
+    name: "Orange Blaze",
+    tagline: "Fiery orange-red — bold and energetic.",
+    swatch: "oklch(0.6 0.17 30)",
   },
   {
-    id: "cobalt",
-    name: "Cobalt",
-    tagline: "Clean B2B-SaaS blue — calm and product-y.",
-    swatch: "oklch(0.585 0.2 254)",
+    id: "orange-sunset",
+    name: "Orange Sunset",
+    tagline: "Golden-orange glow — warm and inviting.",
+    swatch: "oklch(0.63 0.14 50)",
   },
   {
-    id: "amber",
-    name: "Amber",
-    tagline: "Warm and friendly — feels good for SMB teams.",
-    swatch: "oklch(0.745 0.16 65)",
+    id: "orange-pumpkin",
+    name: "Orange Pumpkin",
+    tagline: "Deep pumpkin orange — rich and cozy.",
+    swatch: "oklch(0.61 0.16 45)",
   },
   {
-    id: "rose",
-    name: "Rose",
-    tagline: "Bold and modern — D2C, creator-economy, lifestyle.",
-    swatch: "oklch(0.645 0.22 16)",
+    id: "orange-glow",
+    name: "Orange Glow",
+    tagline: "Bright luminous orange — vibrant and modern.",
+    swatch: "oklch(0.64 0.16 35)",
   },
 ];
 

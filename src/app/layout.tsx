@@ -1,20 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Ubuntu_Sans } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "sonner";
 import "./globals.css";
 import { ThemeProvider } from "@/hooks/use-theme";
 import { DEFAULT_THEME, STORAGE_KEY, THEME_IDS } from "@/lib/themes";
 
-const inter = Inter({
+const ubuntuSans = Ubuntu_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "wacrm",
-    template: "%s — wacrm",
+    default: "WhatsApp CRM v1",
+    template: "%s — WhatsApp CRM v1",
   },
   description: "Self-hostable CRM template for WhatsApp.",
   robots: {
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#020617",
+  themeColor: "#ea580c",
   colorScheme: "dark",
 };
 
@@ -69,7 +70,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme={DEFAULT_THEME}
-      className={`${inter.variable} h-full antialiased`}
+      className={`${ubuntuSans.variable} h-full antialiased`}
       // The `theme-boot` script below rewrites `data-theme` on <html>
       // from localStorage before React hydrates, so for any non-default
       // theme the client DOM intentionally differs from the server-
@@ -85,7 +86,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }}
         />
       </head>
-      <body className="min-h-full bg-background text-foreground font-sans">
+      <body className="min-h-full bg-background text-foreground font-sans" suppressHydrationWarning>
         <ThemeProvider>
           {children}
           <Toaster
